@@ -1,5 +1,8 @@
 """
-Parse comment trees from all pickled threads in cwd
+Author:  Andrew Stocker
+Description:Parse comment trees from all pickled threads in cwd
+Input: none
+Run: python bulk_scorer.py
 """
 import os
 import numpy as np
@@ -18,10 +21,12 @@ def score_all(submission_ids):
   return trees 
   
 
+#Defines correlation method used between reddit scores and bigtree scores
 
 def correlation_all(trees):
   from scipy.stats import pearsonr as corr
   
+  #We are assuming each data set is normally distributed
   tscores_all = np.array([])
   rscores_all = np.array([])
   
@@ -54,8 +59,9 @@ if __name__=="__main__":
   # individual correlation of each scoring methods per thread
   indiv = filter(lambda t: (not np.isnan(t[0])), [t.score_correlation() for t in trees])
   
-  # correlation of scoring methods for all scraped threads
-  print correlation_all(trees)
+  print 'the correlation coeffecient is ' + str(correlation_all(trees)[0])
+  print 'the p-value is ' +  str(correlation_all(trees)[1])
+
   
   
   

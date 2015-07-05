@@ -1,3 +1,9 @@
+"""
+Author: Andrew Stocker
+Description:Gives score for one pickled file
+Input: arg1 =pickled file id in cwd
+Run: python scorer.py arg1
+"""
 import cPickle as pickle
 from copy import deepcopy
 from pprint import pprint
@@ -111,7 +117,12 @@ class CommentTree(object):
   
   
   ## calculate correlation between reddit comment scores
-  ##  and bigtree scores
+  ## and bigtree scores
+  #Uses Pearson_product-moment_correlation_coefficient
+  #More info on PPMCC 
+  #https://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient
+  #Info on pearsonr 
+  #http://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.stats.pearsonr.html
   def score_correlation(self):
     tscores, rscores = self.scores()
     
@@ -140,8 +151,9 @@ class CommentTree(object):
     return CommentTree(comments)
 
 
-
 if __name__=="__main__":
+
+
   tree = CommentTree.from_id(argv[1])
   print tree.score_correlation()
   

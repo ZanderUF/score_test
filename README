@@ -1,0 +1,9 @@
+Author: Andrew Stocker
+Edited by Zander on 7/5/2015
+Description
+These Python scripts scrape a subreddit suplied by the user and then uses a new scoring method referred to as "bigtree score" to rank the threads.  A comparison is done between the bigtree score and the score reddit assigned to the thread.
+
+Dependencies
+Praw --> https://praw.readthedocs.org/en/v3.0.0/
+Numpy --> http://www.numpy.org/
+SciPy --> http://www.scipy.org/
